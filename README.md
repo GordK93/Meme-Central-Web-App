@@ -1,8 +1,4 @@
 # Meme Central Web App
-
-A Node.js + Express web application for browsing memes, built according to a client brief. 
-Users can log in to view meme details, track viewed memes, and search memes by name.
-
 ---
 
 ## Technologies Used
