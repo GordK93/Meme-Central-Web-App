@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Meme Overview</title>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <%- include('partials/navbar', { user }) %>
+
+  <div class="container mt-5">
+    <h1 class="mb-4 text-white">Meme Overview</h1>
+    <form method="GET" action="/memes" class="mb-4 d-flex">
+      <input type="text" name="search" class="form-control me-2" placeholder="Search by name" value="<%= searchQuery || '' %>">
+      <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>    
+    <table class="table table-bordered text-white">
+      <thead class="table-dark">
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <% if (loggedIn) { %>
+            <th>Details</th>
+          <% } %>
+        </tr>
+      </thead>
+      <tbody>
+        <% memes.forEach(meme => { %>
+          <tr class="<%= viewedMemes.includes(meme.id) ? 'table-success' : '' %>">
+            <td>
+              <img src="<%= meme.url %>" style="width: 20%;" alt="Meme" />
+            </td>
+            <td><%= meme.name %></td>
+            <% if (loggedIn) { %>
+              <td>
+                <form method="POST" action="/meme">
+                  <input type="hidden" name="id" value="<%= meme.id %>">
+                  <button type="submit" class="btn btn-primary">Details</button>
+                </form>
+              </td>
+            <% } %>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+  <%- include('partials/scripts') %>
+</body>
+</html>

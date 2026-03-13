@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= meme.name %> - Details</title>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <%- include('partials/navbar', { user }) %>
+
+  <div class="container mt-5 text-white">
+    <h1><%= meme.name %></h1>
+    <img src="<%= meme.url %>" class="img-fluid" alt="<%= meme.name %>">
+    <p><strong>ID:</strong> <%= meme.id %></p>
+    <p><strong>Size:</strong> <%= meme.width %> x <%= meme.height %></p>
+    <a href="/memes" class="btn btn-secondary mt-3">Back</a>
+  </div>
+
+  <%- include('partials/scripts') %>
+</body>
+</html>
